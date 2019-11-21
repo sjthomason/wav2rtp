@@ -1,7 +1,7 @@
 /*
  * $Id$
- * 
- * Copyright (c) 20010, R.Imankulov, Yu Jiang
+ *
+ * Copyright (c) 2010, R.Imankulov, Yu Jiang
  *
  * All rights reserved.
  *
@@ -32,57 +32,36 @@
  *  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
-#ifndef __RTPMAP_H
-#define __RTPMAP_H
+#ifndef __G729A_CODEC_H
+#define __G729A_CODEC_H
 
-#include "dummy_codec.h"
-#include "gsm_codec.h"
-#include "speex_codec.h"
-#include "g711u_codec.h"
-#include "g711a_codec.h"
-#include "g729a_codec.h"
+#include <bcg729/decoder.h>
+#include <bcg729/encoder.h>
 
-/** @defgroup rtp_map  Codec list 
- *  @{
- */
+#include "codecapi.h"
 
-/**
- * Maximum size of the codec name
- */
-#define WR_MAX_CODEC_NAME_SIZE 16
+/** G.729a encoder internal state*/
+typedef struct {
+    int buffer_size;
+    bcg729EncoderChannelContextStruct *encoder_object;
+} wr_g729a_encoder_state;
 
-/**
- * Encoder list
- */
-extern wr_encoder_t encoder_map[];
+/** G.729a decoder internal state*/
+typedef struct {
+    int buffer_size;
+    bcg729DecoderChannelContextStruct *decoder_object;
+} wr_g729a_decoder_state;
 
+wr_encoder_t *wr_g729a_encoder_init(wr_encoder_t *pcodec);
+void wr_g729a_encoder_destroy(wr_encoder_t *pcodec);
+int wr_g729a_encoder_get_input_buffer_size(void *state);
+int wr_g729a_encoder_get_output_buffer_size(void *state);
+int wr_g729a_encode(void *state, const short *input, char *output);
 
-/**
- * Decoder list
- */
-extern wr_decoder_t decoder_map[];
-
-
-/**
- * Return encoder by its name or NULL if nothing is found
- */
-wr_encoder_t * get_encoder_by_name(const char * name);
-
-
-/**
- * Return encoder by its payload type (PT) or NULL if nothing is found
- */
-wr_encoder_t * get_encoder_by_pt(int payload_type);
-
-
-/**
- * Return decoder by its name or NULL if nothing is found
- */
-wr_decoder_t * get_decoder_by_name(const char * name);
-
-/**
- * Return decoder by its payload type (PT) or NULL if nothing is found
- */
-wr_decoder_t * get_decoder_by_pt(int payload_type);
+wr_decoder_t *wr_g729a_decoder_init(wr_decoder_t *pcodec);
+void wr_g729a_decoder_destroy(wr_decoder_t *pcodec);
+int wr_g729a_decoder_get_input_buffer_size(void *state);
+int wr_g729a_decoder_get_output_buffer_size(void *state);
+int wr_g729a_decode(void *state, const char *input, size_t, short *output);
 
 #endif

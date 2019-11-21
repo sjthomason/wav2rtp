@@ -18,6 +18,7 @@ common_sources = rtpmap.c rtpmap.h options.c options.h codecapi.h \
 	sipp_filter.c sipp_filter.h \
 	sort_filter.c sort_filter.h \
 	g711a_codec.c g711a_codec.h \
+	g729a_codec.c g729a_codec.h \
 	misc.c misc.h
 
 wav2rtp_SOURCES = wav2rtp.c $(common_sources)

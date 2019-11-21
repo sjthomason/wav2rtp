@@ -17,6 +17,7 @@ AC_CHECK_LIB([gsm], [gsm_create], ,AC_MSG_ERROR([Cannot find gsm library]))
 AC_CHECK_LIB([sndfile], [sf_open], ,AC_MSG_ERROR([Cannot find sndfile library]))
 AC_CHECK_LIB([speex], [speex_encoder_init], ,AC_MSG_ERROR([Cannot find speex library]))
 AC_CHECK_LIB([pcap], [pcap_next], ,AC_MSG_ERROR([Cannot find pcap library]))
+AC_CHECK_LIB([bcg729], [initBcg729EncoderChannel], ,AC_MSG_ERROR([Cannot find bcg729 library]))
 
 # Checks for header files.
 AC_HEADER_STDC

@@ -49,6 +49,8 @@ wr_encoder_t encoder_map[] = {
             wr_g711u_encoder_get_input_buffer_size, wr_g711u_encoder_get_output_buffer_size, wr_g711u_encode, wr_g711u_encoder_init, wr_g711u_encoder_destroy}, 
     {"PCMA", "ITU-T G.711 codec with a-law compression", NULL, 8, 8000, 
             wr_g711a_encoder_get_input_buffer_size, wr_g711a_encoder_get_output_buffer_size, wr_g711a_encode, wr_g711a_encoder_init, wr_g711a_encoder_destroy}, 
+    {"G729", "ITU-T G.729 Annex A codec", NULL, 18, 8000,
+            wr_g729a_encoder_get_input_buffer_size, wr_g729a_encoder_get_output_buffer_size, wr_g729a_encode, wr_g729a_encoder_init, wr_g729a_encoder_destroy},
     {NULL, NULL, NULL, 0, 0,
             NULL, NULL, NULL, NULL, NULL}
 };
@@ -61,6 +63,8 @@ wr_decoder_t decoder_map[] = {
             wr_g711u_decoder_get_input_buffer_size, wr_g711u_decoder_get_output_buffer_size, wr_g711u_decode, wr_g711u_decoder_init, wr_g711u_decoder_destroy}, 
     {"PCMA", "ITU-T G.711 codec with a-law compression", NULL, 8, 8000, 
             wr_g711a_decoder_get_input_buffer_size, wr_g711a_decoder_get_output_buffer_size, wr_g711a_decode, wr_g711a_decoder_init, wr_g711a_decoder_destroy}, 
+    {"G729", "ITU-T G.729 Annex A codec", NULL, 18, 8000,
+            wr_g729a_decoder_get_input_buffer_size, wr_g729a_decoder_get_output_buffer_size, wr_g729a_decode, wr_g729a_decoder_init, wr_g729a_decoder_destroy},
 
     {NULL, NULL, NULL, 0, 0,
             NULL, NULL, NULL, NULL, NULL}
